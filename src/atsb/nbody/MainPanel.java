@@ -25,7 +25,6 @@ public class MainPanel extends JPanel {
 		
 		b.setText("General");
 		b.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {public void run() {createDisplayUI(testSim(1000));}}.start();
 			}
@@ -35,7 +34,6 @@ public class MainPanel extends JPanel {
 		b = new JButton();
 		b.setText("Solar System");
 		b.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {public void run() {createDisplayUI(testSolarSim());}}.start();
 			}
@@ -45,7 +43,6 @@ public class MainPanel extends JPanel {
 		b = new JButton();
 		b.setText("Galaxy");
 		b.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {public void run() {createDisplayUI(testGalaxySim(1000));}}.start();
 			}
@@ -55,7 +52,6 @@ public class MainPanel extends JPanel {
 		b = new JButton();
 		b.setText("Barnes-Hut");
 		b.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {public void run() {createDisplayUI(testBarnesHut(10000));}}.start();
 			}

@@ -78,14 +78,12 @@ public class DisplayPanel extends JPanel
 		// right click context menu items
 		JMenuItem toggleAxes = new JMenuItem("Toggle Axes");
 		toggleAxes.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				displayAxes = !displayAxes;
 			}
 		});
 		JMenuItem toggleRadials = new JMenuItem("Toggle Radials");
 		toggleRadials.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				displayRadials = !displayRadials;
 			}
@@ -93,7 +91,6 @@ public class DisplayPanel extends JPanel
 		JMenuItem toggleOctTree = new JMenuItem("Toggle OctTree");
 		toggleOctTree.setEnabled(sim.getMethod()==NBodySimulation.METHOD_BARNES_HUT);
 		toggleOctTree.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				displayOctTree = !displayOctTree;
 			}
@@ -231,12 +228,10 @@ public class DisplayPanel extends JPanel
 		doDrawing(g);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
 	}
 
-	@Override
 	public void mouseDragged(MouseEvent e) {
 		Matrix3d r = new Matrix3d();
 		r.setRow(0, xaxis);
@@ -261,36 +256,29 @@ public class DisplayPanel extends JPanel
 		repaint();
 	}
 
-	@Override
 	public void mouseMoved(MouseEvent e) {
 	}
 
-	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		scale += scale * e.getWheelRotation() / 20d;
 		repaint();
 	}
 
-	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
 
-	@Override
 	public void mouseExited(MouseEvent e) {
 	}
 
-	@Override
 	public void mousePressed(MouseEvent e) {
 		// need to capture the initial mouse click
 		xprev = e.getX();
 		yprev = e.getY();
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 	}
 
