@@ -2,8 +2,6 @@ package atsb.nbody;
 
 import java.util.ArrayList;
 
-import javax.vecmath.Vector3d;
-
 /**
  * Performs a n-body simulation of gravitational bodies.
  * 

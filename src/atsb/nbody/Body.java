@@ -1,8 +1,5 @@
 package atsb.nbody;
 
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
-
 /**
  * Represents a gravitational body.
  * 
@@ -11,24 +8,24 @@ import javax.vecmath.Vector3d;
 public class Body {
 	
 	public double m;
-	public Point3d p;
+	public Vector3d p;
 	public Vector3d v;
 
 	public Body() {
-		this.p = new Point3d();
+		this.p = new Vector3d();
 		this.v = new Vector3d();
 	}
 
-	public Body(double mass, Point3d position, Vector3d velocity) {
+	public Body(double mass, Vector3d position, Vector3d velocity) {
 		this.m = mass;
-		this.p = (Point3d) position.clone();
-		this.v = (Vector3d) velocity.clone();
+		this.p = position.clone();
+		this.v = velocity.clone();
 	}
 
 	public Body(Body b) {
 		this.m = b.m;
-		this.p = (Point3d) b.p.clone();
-		this.v = (Vector3d) b.v.clone();
+		this.p = b.p.clone();
+		this.v = b.v.clone();
 	}
 
 	public Body clone() {

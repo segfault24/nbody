@@ -8,8 +8,6 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
 
 /**
  * TODO: implement simulation parameter controls
@@ -100,15 +98,15 @@ public class MainPanel extends JPanel {
 		//b.p.y = (5e20 * Math.random()) * Math.sin(theta);
 		
 		ArrayList<Body> bodies = new ArrayList<Body>();
-		bodies.add(new Body(1.9891e30, new Point3d(0, 0, 0), new Vector3d(0, 0, 0))); // sun
-		bodies.add(new Body(3.302e23, new Point3d(5.7909e10, 0, 0), new Vector3d(0, 4.79e4, 0))); // mercury
-		bodies.add(new Body(4.87e24, new Point3d(1.08e11, 0, 0), new Vector3d(0, 3.50e4, 0))); // venus
-		bodies.add(new Body(5.97e24, new Point3d(1.50e11, 0, 0), new Vector3d(0, 2.98e4, 0))); // earth
-		bodies.add(new Body(6.42e23, new Point3d(2.28e11, 0, 0), new Vector3d(0, 2.41e4, 0))); // mars
-		bodies.add(new Body(1.90e27, new Point3d(7.78e11, 0, 0), new Vector3d(0, 1.31e4, 0))); // jupiter
-		bodies.add(new Body(5.69e26, new Point3d(1.43e12, 0, 0), new Vector3d(0, 9.67e3, 0))); // saturn
-		bodies.add(new Body(8.68e25, new Point3d(2.87e12, 0, 0), new Vector3d(0, 6.84e3, 0))); // uranus
-		bodies.add(new Body(1.02e26, new Point3d(4.50e12, 0, 0), new Vector3d(0, 5.48e3, 0))); // neptune
+		bodies.add(new Body(1.9891e30, new Vector3d(0, 0, 0), new Vector3d(0, 0, 0))); // sun
+		bodies.add(new Body(3.302e23, new Vector3d(5.7909e10, 0, 0), new Vector3d(0, 4.79e4, 0))); // mercury
+		bodies.add(new Body(4.87e24, new Vector3d(1.08e11, 0, 0), new Vector3d(0, 3.50e4, 0))); // venus
+		bodies.add(new Body(5.97e24, new Vector3d(1.50e11, 0, 0), new Vector3d(0, 2.98e4, 0))); // earth
+		bodies.add(new Body(6.42e23, new Vector3d(2.28e11, 0, 0), new Vector3d(0, 2.41e4, 0))); // mars
+		bodies.add(new Body(1.90e27, new Vector3d(7.78e11, 0, 0), new Vector3d(0, 1.31e4, 0))); // jupiter
+		bodies.add(new Body(5.69e26, new Vector3d(1.43e12, 0, 0), new Vector3d(0, 9.67e3, 0))); // saturn
+		bodies.add(new Body(8.68e25, new Vector3d(2.87e12, 0, 0), new Vector3d(0, 6.84e3, 0))); // uranus
+		bodies.add(new Body(1.02e26, new Vector3d(4.50e12, 0, 0), new Vector3d(0, 5.48e3, 0))); // neptune
 
 		NBodySimulation sim = new NBodySimulation();
 		sim.setTimeStep(7 * 24 * 60 * 60);
@@ -124,7 +122,7 @@ public class MainPanel extends JPanel {
 		
 		ArrayList<Body> bodies = new ArrayList<Body>();
 		//bodies.add(new Body(8.15e36, new Point3d(0, 0, 0), new Vector3d(0, 0, 0))); // SMBH galactic center
-		bodies.add(new Body(2.2e41, new Point3d(0, 0, 0), new Vector3d(0, 0, 0))); // SMBH galactic center*
+		bodies.add(new Body(2.2e41, new Vector3d(0, 0, 0), new Vector3d(0, 0, 0))); // SMBH galactic center*
 		
 		//bodies.add(new Body(1.9891e30, new Point3d(2.469e20, 0, 0), new Vector3d(0, 2.3e5, 0))); // sol
 		

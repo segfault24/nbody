@@ -2,15 +2,13 @@ package atsb.nbody;
 
 import java.util.ArrayList;
 
-import javax.vecmath.Point3d;
-
 public class OctNode {
 	
 	private double lx, ly, lz, ux, uy, uz; // bounding planes
 	private ArrayList<Body> bodies; // bodies within the node
 	private ArrayList<OctNode> children; // sub nodes
 	
-	private Point3d centerOfMass;
+	private Vector3d centerOfMass;
 	private double totalMass;
 	
 	public OctNode(double lx, double ly, double lz, double ux, double uy, double uz) {
@@ -23,7 +21,7 @@ public class OctNode {
 		
 		bodies = new ArrayList<Body>();
 		children = new ArrayList<OctNode>();
-		centerOfMass = new Point3d();
+		centerOfMass = new Vector3d();
 	}
 	
 	public void addBody(Body b) {
@@ -90,7 +88,7 @@ public class OctNode {
 		return uz;
 	}
 	
-	public Point3d getCenterOfMass() {
+	public Vector3d getCenterOfMass() {
 		return centerOfMass;
 	}
 	

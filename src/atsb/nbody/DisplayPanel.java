@@ -17,9 +17,6 @@ import java.util.TimerTask;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.vecmath.Matrix3d;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
 
 /**
  * Display panel for the simulation results.
@@ -51,7 +48,7 @@ public class DisplayPanel extends JPanel
 	private NBodySimulation sim;
 	
 	// viewing plane parameters
-	private Point3d center = new Point3d(0, 0, 0);
+	//private Vector3d center = new Vector3d(0, 0, 0);
 	private Vector3d xaxis = new Vector3d(1, 0, 0);
 	private Vector3d yaxis = new Vector3d(0, 1, 0);
 	private Vector3d zaxis = new Vector3d(0, 0, 1);
@@ -143,9 +140,9 @@ public class DisplayPanel extends JPanel
 
 	private void drawAxes(Graphics2D g2d) {
 		g2d.setPaint(axesColor);
-		line(g2d, new Point3d(0, 0, 0), new Point3d(40/scale, 0, 0));
-		line(g2d, new Point3d(0, 0, 0), new Point3d(0, 40/scale, 0));
-		line(g2d, new Point3d(0, 0, 0), new Point3d(0, 0, 40/scale));
+		line(g2d, new Vector3d(0, 0, 0), new Vector3d(40/scale, 0, 0));
+		line(g2d, new Vector3d(0, 0, 0), new Vector3d(0, 40/scale, 0));
+		line(g2d, new Vector3d(0, 0, 0), new Vector3d(0, 0, 40/scale));
 	}
 
 	private void drawBodies(Graphics2D g2d) {
@@ -156,14 +153,14 @@ public class DisplayPanel extends JPanel
 			
 			if(displayRadials) {
 				g2d.setColor(DisplayPanel.radialColor);
-				line(g2d, results.get(i).p, new Point3d(0, 0, 0));
+				line(g2d, results.get(i).p, new Vector3d(0, 0, 0));
 			}
 		}
 	}
 
 	private void drawOctTree(Graphics2D g2d, OctNode n) {
 		g2d.setColor(octTreeColor);
-		cube(g2d, new Point3d(n.getLx(), n.getLy(), n.getLz()), new Point3d(n.getUx(), n.getUy(), n.getUz()));
+		cube(g2d, new Vector3d(n.getLx(), n.getLy(), n.getLz()), new Vector3d(n.getUx(), n.getUy(), n.getUz()));
 		
 		ArrayList<OctNode> nodes = n.getChildren();
 		for(int i=0; i<nodes.size(); i++) {
@@ -171,7 +168,7 @@ public class DisplayPanel extends JPanel
 		}
 	}
 
-	private void point(Graphics2D g2d, Point3d p) {
+	private void point(Graphics2D g2d, Vector3d p) {
 		int w = getWidth();
 		int h = getHeight();
 		Vector3d v = new Vector3d(p);
@@ -188,7 +185,7 @@ public class DisplayPanel extends JPanel
 		g2d.fillOval((int) (x - 2), (int) (y - 2), 4, 4);
 	}
 
-	private void line(Graphics2D g2d, Point3d p1, Point3d p2) {
+	private void line(Graphics2D g2d, Vector3d p1, Vector3d p2) {
 		int w = getWidth();
 		int h = getHeight();
 		Vector3d v1 = new Vector3d(p1);
@@ -203,23 +200,23 @@ public class DisplayPanel extends JPanel
 		g2d.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 	}
 
-	private void cube(Graphics2D g2d, Point3d p1, Point3d p2) {
-		line(g2d, new Point3d(p1.x, p1.y, p1.z), new Point3d(p2.x, p1.y, p1.z));
-		line(g2d, new Point3d(p1.x, p1.y, p1.z), new Point3d(p1.x, p2.y, p1.z));
-		line(g2d, new Point3d(p1.x, p1.y, p1.z), new Point3d(p1.x, p1.y, p2.z));
+	private void cube(Graphics2D g2d, Vector3d p1, Vector3d p2) {
+		line(g2d, new Vector3d(p1.x, p1.y, p1.z), new Vector3d(p2.x, p1.y, p1.z));
+		line(g2d, new Vector3d(p1.x, p1.y, p1.z), new Vector3d(p1.x, p2.y, p1.z));
+		line(g2d, new Vector3d(p1.x, p1.y, p1.z), new Vector3d(p1.x, p1.y, p2.z));
 		
-		line(g2d, new Point3d(p2.x, p1.y, p1.z), new Point3d(p2.x, p2.y, p1.z));
-		line(g2d, new Point3d(p2.x, p1.y, p1.z), new Point3d(p2.x, p1.y, p2.z));
+		line(g2d, new Vector3d(p2.x, p1.y, p1.z), new Vector3d(p2.x, p2.y, p1.z));
+		line(g2d, new Vector3d(p2.x, p1.y, p1.z), new Vector3d(p2.x, p1.y, p2.z));
 		
-		line(g2d, new Point3d(p1.x, p2.y, p1.z), new Point3d(p2.x, p2.y, p1.z));
-		line(g2d, new Point3d(p1.x, p2.y, p1.z), new Point3d(p1.x, p2.y, p2.z));
+		line(g2d, new Vector3d(p1.x, p2.y, p1.z), new Vector3d(p2.x, p2.y, p1.z));
+		line(g2d, new Vector3d(p1.x, p2.y, p1.z), new Vector3d(p1.x, p2.y, p2.z));
 		
-		line(g2d, new Point3d(p1.x, p1.y, p2.z), new Point3d(p2.x, p1.y, p2.z));
-		line(g2d, new Point3d(p1.x, p1.y, p2.z), new Point3d(p1.x, p2.y, p2.z));
+		line(g2d, new Vector3d(p1.x, p1.y, p2.z), new Vector3d(p2.x, p1.y, p2.z));
+		line(g2d, new Vector3d(p1.x, p1.y, p2.z), new Vector3d(p1.x, p2.y, p2.z));
 		
-		line(g2d, new Point3d(p2.x, p2.y, p1.z), new Point3d(p2.x, p2.y, p2.z));
-		line(g2d, new Point3d(p1.x, p2.y, p2.z), new Point3d(p2.x, p2.y, p2.z));
-		line(g2d, new Point3d(p2.x, p1.y, p2.z), new Point3d(p2.x, p2.y, p2.z));
+		line(g2d, new Vector3d(p2.x, p2.y, p1.z), new Vector3d(p2.x, p2.y, p2.z));
+		line(g2d, new Vector3d(p1.x, p2.y, p2.z), new Vector3d(p2.x, p2.y, p2.z));
+		line(g2d, new Vector3d(p2.x, p1.y, p2.z), new Vector3d(p2.x, p2.y, p2.z));
 	}
 
 	@Override
@@ -234,9 +231,9 @@ public class DisplayPanel extends JPanel
 
 	public void mouseDragged(MouseEvent e) {
 		Matrix3d r = new Matrix3d();
-		r.setRow(0, xaxis);
-		r.setRow(1, yaxis);
-		r.setRow(2, zaxis);
+		r.setRow0(xaxis);
+		r.setRow1(yaxis);
+		r.setRow2(zaxis);
 
 		Matrix3d m = new Matrix3d();
 		m.rotX((yprev - e.getY()) / 100d);
@@ -246,9 +243,9 @@ public class DisplayPanel extends JPanel
 		// m.rotZ(0);
 		// r.mul(m);
 
-		r.getRow(0, xaxis);
-		r.getRow(1, yaxis);
-		r.getRow(2, zaxis);
+		r.getRow0(xaxis);
+		r.getRow1(yaxis);
+		r.getRow2(zaxis);
 
 		xprev = e.getX();
 		yprev = e.getY();
