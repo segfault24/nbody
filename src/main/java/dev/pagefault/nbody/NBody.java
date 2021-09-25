@@ -1,4 +1,4 @@
-package atsb.nbody;
+package dev.pagefault.nbody;
 
 import java.awt.EventQueue;
 

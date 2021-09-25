@@ -1,4 +1,4 @@
-package atsb.nbody;
+package dev.pagefault.nbody;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
